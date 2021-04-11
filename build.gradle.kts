@@ -25,6 +25,6 @@ tasks.test {
 }
 
 application {
-    mainClass.set("Main")
+    mainClass.set("ru.java.markdown.Main")
 }
 

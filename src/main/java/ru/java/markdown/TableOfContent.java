@@ -21,4 +21,8 @@ public class TableOfContent {
         heading.setLevel(MIN_LEVEL);
         headings.add(heading);
     }
+
+    public boolean isEmpty() {
+        return headings.isEmpty();
+    }
 }

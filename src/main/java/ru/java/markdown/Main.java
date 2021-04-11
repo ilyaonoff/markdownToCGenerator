@@ -24,7 +24,9 @@ public class Main {
 
             TableOfContent toc = MarkdownTableOfContentGenerator.getTableOfContent(inputFile);
 
-            System.out.println(toc);
+            if (!toc.isEmpty()) {
+                System.out.println(toc);
+            }
             Files.lines(Paths.get(args[0])).forEach(System.out::println);
             addTextToFileBeginning(toc.toString(), args[0]);
 
@@ -45,12 +47,14 @@ public class Main {
         }
     }
 
-    private static void copyFileWithNewBeginning(String toc, File dest, File source) throws IOException {
+    private static void copyFileWithNewBeginning(String beginning, File dest, File source) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(dest));
              BufferedReader reader = new BufferedReader(new FileReader(source))
         ) {
-            writer.write(toc);
-            writer.write("\n");
+            if (!beginning.isEmpty()) {
+                writer.write(beginning);
+                writer.write("\n");
+            }
             while (reader.ready()) {
                 writer.write(reader.readLine());
                 writer.write("\n");
