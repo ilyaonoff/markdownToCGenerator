@@ -23,3 +23,8 @@ tasks.compileJava {
 tasks.test {
     useJUnitPlatform()
 }
+
+application {
+    mainClass.set("Main")
+}
+
